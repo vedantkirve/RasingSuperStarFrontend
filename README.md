@@ -1,16 +1,57 @@
-# React + Vite
+# Raising Superstars - Coach Booking Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack application for coach booking, featuring a Rails 8 backend and a React + Vite frontend.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
 
-## React Compiler
+| Component | Language | Dependency Manager | Version |
+|-----------|----------|-------------------|---------|
+| **Backend** | Ruby | Bundle | v3.4.8+ |
+| **Frontend** | Node.js | NPM | v20+ |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Installation & Execution
 
-## Expanding the ESLint configuration
+#### 1. Backend (Rails)
+```bash
+cd backend
+bundle install
+bin/rails db:create db:migrate
+bin/rails server
+```
+*API running at `http://localhost:3000`*
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+#### 2. Frontend (React)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+*App running at `http://localhost:5173`*
+
+---
+
+## Folder Architecture
+
+The project consists of two main folders:
+
+```text
+RaisingSuperstars/
+├── backend/    # Rails 8 JSON API
+│   ├── app/    # Core logic (Controllers, Models, Services)
+│   ├── config/ # Environment and route settings
+│   └── db/     # Database migrations
+└── frontend/   # React + Vite Application
+    ├── src/    # Source code
+    │   ├── pages/    # Main views (BookingPage.jsx)
+    │   ├── services/ # API client (Axios)
+    │   └── lib/      # Styling utilities
+    └── public/ # Static assets
+```
+
+## How it Works
+
+1. **Zones**: Coaches are assigned to specific geographical zones.
+2. **Availability**: The backend exposes time slots in 90-minute blocks (shared via `constants/slots.js`).
+3. **Booking**: The frontend allows users to browse a 7-day tabbed view of available slots and book them using a seamless dark-themed interface.
