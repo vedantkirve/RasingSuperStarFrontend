@@ -1,57 +1,51 @@
-# Raising Superstars - Coach Booking Project
+# Raising Superstars - Coach Booking Frontend
 
-A full-stack application for coach booking, featuring a Rails 8 backend and a React + Vite frontend.
+A modern React application for booking coaches based on geographical zones, built with Vite and Tailwind CSS.
 
-## Getting Started
+## Prerequisites
 
-### Prerequisites
+- **Node.js**: v20 or higher
+- **NPM**: v10 or higher
+- **Backend API**: Should be running at `http://localhost:3000`
 
-| Component | Language | Dependency Manager | Version |
-|-----------|----------|-------------------|---------|
-| **Backend** | Ruby | Bundle | v3.4.8+ |
-| **Frontend** | Node.js | NPM | v20+ |
+## Quick Start
 
-### Installation & Execution
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-#### 1. Backend (Rails)
-```bash
-cd backend
-bundle install
-bin/rails db:create db:migrate
-bin/rails server
-```
-*API running at `http://localhost:3000`*
+2. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
 
-#### 2. Frontend (React)
-```bash
-cd frontend
-npm install
-npm run dev
-```
-*App running at `http://localhost:5173`*
+The app will be available at `http://localhost:5173`.
 
 ---
 
 ## Folder Architecture
 
-The project consists of two main folders:
-
 ```text
-RaisingSuperstars/
-├── backend/    # Rails 8 JSON API
-│   ├── app/    # Core logic (Controllers, Models, Services)
-│   ├── config/ # Environment and route settings
-│   └── db/     # Database migrations
-└── frontend/   # React + Vite Application
-    ├── src/    # Source code
-    │   ├── pages/    # Main views (BookingPage.jsx)
-    │   ├── services/ # API client (Axios)
-    │   └── lib/      # Styling utilities
-    └── public/ # Static assets
+src/
+├── components/   # Reusable UI elements (Button, Card, etc.)
+├── constants/    # Static data like shared time slots
+├── lib/          # Utilities and styling helpers (cn function)
+├── pages/        # Main application screens (BookingPage.jsx)
+├── services/     # API logic and Axios client (api.js)
+├── App.jsx       # Root component and global providers
+└── main.jsx      # Entry point for React
 ```
 
 ## How it Works
 
-1. **Zones**: Coaches are assigned to specific geographical zones.
-2. **Availability**: The backend exposes time slots in 90-minute blocks (shared via `constants/slots.js`).
-3. **Booking**: The frontend allows users to browse a 7-day tabbed view of available slots and book them using a seamless dark-themed interface.
+1. **Zone Selection**: Choose a zone to trigger the availability search.
+2. **Availability Tabs**: Browse a 7-day horizontal view of available spots.
+3. **Seamless Booking**: Select a slot to book instantly. Error and success messages are displayed via global toast notifications.
+
+## Technologies
+
+- **React + Vite**
+- **Tailwind CSS**
+- **Axios** (API Client)
+- **Sonner** (Toast Notifications)
